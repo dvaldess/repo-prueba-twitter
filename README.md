@@ -4,11 +4,11 @@ Hola, este repositorio contiene un app tipo Tweet
 
 Para testearla debes ingresar al siguiente link:
 
-https://pacific-depths-41201.herokuapp.com/
+https://quiet-garden-36516.herokuapp.com/
 
 Para acceder al panel de administracion del sitio:
 
-https://pacific-depths-41201.herokuapp.com/admin/login
+https://quiet-garden-36516.herokuapp.com/admin/login
 
 Email: admin@example.com
 Password: 123456
