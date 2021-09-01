@@ -1,0 +1,20 @@
+<%= form_with(model: tweet, local: true) do |form| %>
+  <% if tweet.errors.any? %>
+    <div id="error_explanation">
+      <h5 class= "text-danger font-weight-bold">Atención! Existe <%= pluralize(tweet.errors.count, "error") %> el cual no permite guardar tu tweet</h5>
+      <ul>
+      <% tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.text_area :content, autofocus: true, placeholder: 'Escriba su Tweet', class:'rounded-pill border-dark form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear Tweet", class:'btn btn-success border-dark  mb-4' %>
+  </div>
+<% end %>

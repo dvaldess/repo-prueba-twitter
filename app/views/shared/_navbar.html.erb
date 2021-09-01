@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <%= link_to 'Twitter DVS', root_path, class:'navbar-brand text-white'%>
+    <%= form_with(url: root_path, method: :get, local: :true, class: 'form-inline my-2 my-lg-0') do %>
+    <%= text_field_tag :q, "", class: 'form-control mr-sm-2'%>
+    <%= submit_tag("Buscar", class: 'btn btn-outline-success my-2 my-sm-0 mr-3')%>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon pb-4"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto mt-2">
+        <% if user_signed_in? %>
+            <li class="nav-item pt-2 pr-4">
+                <q class="text-white mb-4">Bienvenid@, <%= link_to current_user.username, user_session_path(current_user.id), class:'text-white'  %></q>
+            </li>
+            <li class="nav-item pr-2 btn btn-danger border-dark">
+                <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class:'text-white' %>
+            </li>
+        <% else %>
+            <li class="nav-item mb-2 pr-2 mr-2 btn btn-primary border-dark">
+                <%= link_to 'Registrate', new_user_registration_path, class:'text-white' %>
+            </li>
+            <li class="nav-item mb-2 pr-2 mr-2 btn btn-success border-dark">
+                <%= link_to 'Iniciar Sesion', new_user_session_path, class:'text-white' %>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+</nav>

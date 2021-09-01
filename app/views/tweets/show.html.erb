@@ -1,0 +1,24 @@
+<div>
+  <h4 class="text-success text-center pb-2">Usuarios que dieron Like al Tweet</h4>
+</div>
+
+<div class="container mx-auto mt-4">
+  <div class="row justify-content-md-center">
+    <% @tweet_likes.each do |tweet| %>
+      <div class="col-md-4">
+        <div class="card rounded-5">
+          <div class="container mt-3">
+            <%= image_tag tweet.user.avatar, class:'img-fluid' %> 
+          </div>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Usuario: @<%= tweet.user.username %></h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<li class="nav-item mb-2 pr-2 mr-2 btn btn-success border-dark">
+    <%= link_to 'Volver a los Tweets', root_path, class:'text-white' %>
+</li>
