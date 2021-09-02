@@ -1,4 +1,4 @@
-# Prueba twitter
+# Prueba Twitter
 
 Hola, este repositorio contiene un app tipo Tweet
 
