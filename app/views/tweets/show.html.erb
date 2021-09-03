@@ -1,5 +1,11 @@
 <div>
-  <h4 class="text-success text-center pb-2">Usuarios que dieron Like al Tweet</h4>
+  <h3 class="text-success text-center pb-2">Listado de Usuarios que dieron Like al Tweet</h3>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+  <% if @tweet.likes.count == 0 %>
+  <strong>De momento, el tweet no cuenta con likes</strong>
+    <% end %>
 </div>
 
 <div class="container mx-auto mt-4">
