@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     end
     resources :tweet
   end
-  delete 'like/:id', to: 'likes#delete', as:'like_delete'
+  #Ruta para eliminar los like
+  delete 'like/:id', to: 'likes#delete', as:'like_delete' 
+  #Ruta para los seguidores
+  post 'follows/:id', to: 'follows#to_follow', as: 'follow'
+  delete 'follows/:id', to: 'follows#to_unfollow', as: 'unfollow'
   root 'tweets#index'
 end

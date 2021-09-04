@@ -1,0 +1,14 @@
+<div class=container">
+    <% @current_user.can_follow.each do |user| %>
+        <%if current_user != user.id %>
+            <%= link_to follow_path(user.id), method: :post do %>
+                    <div class="user-image mt-2">
+                        <%= image_tag user.avatar, class:"mt-3 rounded-circle", style:"border: 2px solid red"%>
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label"><%= user.username %></span>
+                        </div>
+                    </div>
+            <%end %>
+        <%end %>
+    <% end %>
+</div>

@@ -4,14 +4,20 @@ class TweetsController < ApplicationController
 
   # GET /tweets or /tweets.json
   def index
-    #Busqueda Parcial
+    #Busqueda Parcial del contenido
     if params[:q]
       @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page]
+    elsif user_signed_in?
+      @tweets = Tweet.tweets_for_me(current_user).or(current_user.tweets).order(created_at: :desc).page params[:page]
     else
-      @tweets = Tweet.eager_load(:likes).order(created_at: :desc).page params[:page] #Ordenando la vista dejando el ultimo creado en primera posicion
+      @tweets = Tweet.all.order(created_at: :desc).page params[:page]
+      #@tweets = Tweet.eager_load(:likes).order(created_at: :desc).page params[:page] #Ordenando la vista dejando el ultimo creado en primera posicion
     end
     @tweet = Tweet.new #Accion para crear un tweet
-    @user_likes = Like.eager_load(:user, :tweet).where(user: current_user).pluck(:tweet_id)
+    @user_likes = Like.where(user: current_user).pluck(:tweet_id)
+    @users = User.where.not(id: current_user.id).last(5) if user_signed_in?
+    #@user_likes = Like.eager_load(:user, :tweet).where(user: current_user).pluck(:tweet_id)
+    #@users  = User.where('id IS NOT ?', current_user.id).last(5) if user_signed_in?
   end
 
   # GET /tweets/1 or /tweets/1.json

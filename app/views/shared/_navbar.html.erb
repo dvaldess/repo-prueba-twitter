@@ -11,16 +11,19 @@
         <ul class="navbar-nav ml-auto mt-2">
         <% if user_signed_in? %>
             <li class="nav-item pt-2 pr-4">
-                <q class="text-white mb-4">Bienvenid@, <%= link_to current_user.username, user_session_path(current_user.id), class:'text-white'  %></q>
+                <q class="text-white">Bienvenid@, <%= link_to current_user.username, user_session_path(current_user.id), class:'text-white'  %></q>
             </li>
-            <li class="nav-item pr-2 btn btn-danger border-dark">
+            <li class="nav-item active mr-3">
+                <%= image_tag current_user.avatar, class: "user-photo rounded-circle", style:"border: 2px solid red" %>
+            </li>
+            <li class="nav-item btn btn-danger border-dark mr-3 mb-2">
                 <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class:'text-white' %>
             </li>
         <% else %>
-            <li class="nav-item mb-2 pr-2 mr-2 btn btn-primary border-dark">
+            <li class="nav-item pr-2 mr-2 btn btn-primary border-dark">
                 <%= link_to 'Registrate', new_user_registration_path, class:'text-white' %>
             </li>
-            <li class="nav-item mb-2 pr-2 mr-2 btn btn-success border-dark">
+            <li class="nav-item pr-2 mr-2 btn btn-success border-dark">
                 <%= link_to 'Iniciar Sesion', new_user_session_path, class:'text-white' %>
             </li>
         <% end %>

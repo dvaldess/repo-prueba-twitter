@@ -8,16 +8,16 @@
     <% end %>
 </div>
 
-<div class="container mx-auto mt-4">
+<div class="container mx-auto mt-4 mb-4">
   <div class="row justify-content-md-center">
     <% @tweet_likes.each do |tweet| %>
       <div class="col-md-4">
-        <div class="card rounded-5">
-          <div class="container mt-3">
-            <%= image_tag tweet.user.avatar, class:'img-fluid' %> 
+        <div >
+          <div class="user-image mt-3">
+            <%= image_tag tweet.user.avatar, class:"mt-3 rounded-circle", style:"border: 2px solid red" %> 
           </div>
-          <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Usuario: @<%= tweet.user.username %></h6>
+          <div class="rank-label-container">
+            <span class="label label-default rank-label"><%= tweet.user.username %></span>
           </div>
         </div>
       </div>
@@ -25,6 +25,6 @@
   </div>
 </div>
 
-<li class="nav-item mb-2 pr-2 mr-2 btn btn-success border-dark">
+<li class="nav-item mb-2 mt-4 pr-2 mr-2 btn btn-success border-dark">
     <%= link_to 'Volver a los Tweets', root_path, class:'text-white' %>
 </li>

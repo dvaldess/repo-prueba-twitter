@@ -5,6 +5,8 @@ class Tweet < ApplicationRecord
   paginates_per 50 #Limitando para kamirami
   validates :content, presence: true #Validar la presencia del contenido
 
+  scope :tweets_for_me, -> (user) { where(:user_id => user.followeds.pluck(:followed_id)) }
+
   #Metodo para buscar la imagenen del que Retwitea
   #Y asi poder ocuparlo en el index
   def master_avatar
