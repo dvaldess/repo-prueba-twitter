@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: "json"} do
     namespace :v1 do
-      get 'tweet/news'
+      get 'news', to: 'tweets#news'
+      get ':first_date/:last_date', to: 'tweets#by_date'
     end
   end
   devise_for :admin_users, ActiveAdmin::Devise.config
